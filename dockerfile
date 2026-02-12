@@ -27,3 +27,5 @@ RUN chmod 755 /opt/scripts/ice.sh
 COPY scripts/victoire.sh /opt/scripts/victoire.sh
 RUN chmod 755 /opt/scripts/victoire.sh
 COPY datas/index.html /var/www/html/index.html
+EXPOSE 80
+CMD ["ngnix", "-g"]
