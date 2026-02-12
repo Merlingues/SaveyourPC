@@ -1,0 +1,8 @@
+/!\ ALERTE /!\
+un processus malveillant a été détecté [ICE]
+D'après nos information ce processus detruirai tout pc contaminé en 10 min.
+
+# Mission : Vous devez vous connecter en admin, trouver le processus et l'arreter avant que celui ne détruise votre pc.
+
+vous de trouverez des pour vous aidez avec la commande "help" et le site web suivant :
+    www.euroscope.mmn
