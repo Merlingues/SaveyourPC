@@ -1,0 +1,6 @@
+services:
+  ubuntu-custom:
+    build: .
+    container_name: SaveyourPC
+    stdin_open: true # Equivalent de -i
+    tty: true        # Equivalent de -t
