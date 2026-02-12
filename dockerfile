@@ -3,6 +3,7 @@ FROM ubuntu:latest
 RUN apt-get update && apt-get install -y \
     curl \
     fortune \
+    ngnix \
     nsnake \
     sl \
     && rm -rf /var/lib/apt/lists/*
@@ -25,3 +26,4 @@ COPY scripts/ice.sh /opt/scripts/ice.sh
 RUN chmod 755 /opt/scripts/ice.sh
 COPY scripts/victoire.sh /opt/scripts/victoire.sh
 RUN chmod 755 /opt/scripts/victoire.sh
+COPY datas/index.html /var/www/html/index.html

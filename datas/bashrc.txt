@@ -1,7 +1,15 @@
 ##Ajouter le contenu de ce fichier à la fin du .bashrc pour tous les users
+
 ##Montre à l'utilisateur la liste des commandes disponibles
 alias help='sudo /opt/scripts/help.sh'
+
 ##Lance ce processus lors de la connexion SSH de l'utilisateur user
 /opt/scripts/ice.sh &
+
 ##Vérifie que le script perdu est lancé et une fois qu'il est lancé, vérifie chaque seconde si il tourne. Si il ne tourne plus, lance le script victoire
 (while ! pgrep -x "ice.sh" > /dev/null; do sleep 1; done; while pgrep -x "ice.sh" > /dev/null; do sleep 1; done; /home/user/victoire.sh) &
+
+##
+
+
+##
