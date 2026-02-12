@@ -6,4 +6,5 @@ RUN apt-get update && apt-get install -y \
     nsnake \
     sl \
     && rm -rf /var/lib/apt/lists/*
-    
+
+RUN useradd -m user
