@@ -8,8 +8,11 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m user
+##Change le repertoire de travail.
 WORKDIR /home/user
 
+USER root
+RUN useradd -m admin && echo "admin:letmein" | chpasswd
 RUN cat datas/memo.txt >> /etc/motd
 RUN cat "echo /etc/motd" >> /home/user/.bashrc
 
