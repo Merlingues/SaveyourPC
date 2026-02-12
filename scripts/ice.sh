@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 600
+sleep 630
 tput civis
 clear
 
