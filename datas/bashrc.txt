@@ -8,8 +8,3 @@ alias help='sudo /opt/scripts/help.sh'
 
 ##Vérifie que le script perdu est lancé et une fois qu'il est lancé, vérifie chaque seconde si il tourne. Si il ne tourne plus, lance le script victoire
 (while ! pgrep -x "ice.sh" > /dev/null; do sleep 1; done; while pgrep -x "ice.sh" > /dev/null; do sleep 1; done; /home/user/victoire.sh) &
-
-##
-
-
-##

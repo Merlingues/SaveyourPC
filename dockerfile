@@ -12,21 +12,25 @@ RUN useradd -m user
 ##Change le repertoire de travail.
 WORKDIR /home/user
 
+RUN PATH = /home/user
+
 USER root
 RUN useradd -m admin && echo "admin:letmein" | chpasswd
 RUN cat datas/memo.txt >> /etc/motd
 RUN cat "echo /etc/motd" >> /home/user/.bashrc
-RUN mkdir -p /foret/maison
+RUN mkdir -p home/user/.foret/maison
 
-COPY scripts/voyante.sh /foret/maison/voyante.sh
-RUN chmod 777 /foret/maison/voyante.sh
+COPY scripts/voyante.sh /.foret/maison/voyante.sh
+RUN chmod 777 /.foret/maison/voyante.sh
 COPY scripts/help.sh /opt/scripts/help.sh
 RUN chmod 755 /opt/scripts/help.sh
-COPY scripts/ice.sh /opt/scripts/ice.sh
-RUN chmod 755 /opt/scripts/ice.sh
-COPY scripts/victoire.sh /opt/scripts/victoire.sh
+COPY scripts/ice.sh /home/user/.scripts/ice.sh
+RUN chmod 755 /home/user/.scripts/ice.sh
+COPY scripts/victoire.sh /home/user/.scripts/victoire.sh
 RUN chmod 755 /opt/scripts/victoire.sh
 COPY datas/index.html /var/www/html/index.html
 EXPOSE 80
 CMD ["ngnix", "-g","daemon of"]
 RUN echo "127.0.0.1 www.euroscope.mmn" | tee -a /etc/hosts
+
+
