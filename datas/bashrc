@@ -1,5 +1,3 @@
-##Ajouter le contenu de ce fichier à la fin du .bashrc pour tous les users
-
 ##Montre à l'utilisateur la liste des commandes disponibles
 alias help='sudo /opt/scripts/help.sh'
 

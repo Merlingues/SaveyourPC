@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# On vérifie si l'argument contient l'url du site web
+if [[ "$1" == *"www.euroscope.mmn"* ]]; then
+    # On appelle le VRAI curl qui est caché dans /usr/bin/
+    /usr/bin/curl "$@"
+else
+    echo "Accès refusé / Mauvais lien"
+fi
