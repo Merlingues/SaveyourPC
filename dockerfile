@@ -28,4 +28,5 @@ COPY scripts/victoire.sh /opt/scripts/victoire.sh
 RUN chmod 755 /opt/scripts/victoire.sh
 COPY datas/index.html /var/www/html/index.html
 EXPOSE 80
-CMD ["ngnix", "-g"]
+CMD ["ngnix", "-g","daemon of"]
+RUN echo "127.0.0.1 www.euroscope.mmn" | tee -a /etc/hosts
