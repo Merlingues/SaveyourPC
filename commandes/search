@@ -1,0 +1,22 @@
+#!/bin/bash
+# Si l'utilisateur n'entre pas de mot-clé
+if [ -z "$1" ]; then
+    echo "Erreur : Paramètre vide"
+    exit 1
+fi
+
+echo "Recherche en cours ."
+sleep 0.3
+echo "Recherche en cours .."
+sleep 0.3
+echo "Recherche en cours ..."
+Sleep 0.4
+
+RESULTAT=$(find . -not -path '*/.*' -iname "*$1*" 2>/dev/null)
+
+if [ -z "$RESULTAT" ]; then
+    echo "[-] Aucun résultat trouvé pour '$1'."
+else
+    echo "[+] Correspondance(s) trouvée(s) :"
+    echo "$RESULTAT"
+fi
