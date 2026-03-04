@@ -19,21 +19,21 @@ COPY commandes/ /usr/gamebinaire
 #Limitation des commandes
 RUN ln -s /usr/bin/fortune /usr/gamebinaire/fortune && \
     ln -s /usr/bin/nsnake /usr/gamebinaire/nsnake && \
-    ln -s /usr/bin/pwd usr/gamebinaire/pwd && \
-    ln -s /usr/bin/cd usr/gamebinaire/cd && \
-    ln -s /usr/bin usr/gamebinaire && \
-    ln -s /usr/bin/cat usr/gamebinaire/cat && \
-    ln -s /usr/bin/clear usr/gamebinaire/clear && \
-    ln -s /usr/bin/fortune usr/gamebinaire/fortune && \
-    ln -s /usr/bin/nsnake usr/gamebinaire/nsnake && \
-    ln -s /usr/bin/sl usr/gamebinaire/sl && \
-    ln -s /usr/bin/echo usr/gamebinaire/echo
+    ln -s /usr/bin/pwd /usr/gamebinaire/pwd && \
+    ln -s /usr/bin/cd /usr/gamebinaire/cd && \
+    ln -s /usr/bin /usr/gamebinaire && \
+    ln -s /usr/bin/cat /usr/gamebinaire/cat && \
+    ln -s /usr/bin/clear /usr/gamebinaire/clear && \
+    ln -s /usr/bin/fortune /usr/gamebinaire/fortune && \
+    ln -s /usr/bin/nsnake /usr/gamebinaire/nsnake && \
+    ln -s /usr/bin/sl /usr/gamebinaire/sl && \
+    ln -s /usr/bin/echo /usr/gamebinaire/echo
 
 #limiter seulement pour le compte admin
-RUN ln -s /usr/bin/ps-list usr/adminbinaire/ps-list && \
-    ln -s /usr/bin/kill-proc usr/adminbinaire/kill-proc && \
-    ln -s /usr/bin/exit usr/adminbinaire/exit && \
-    ln -s /usr/gamebinaire/* usr/adminbinaire && \
+RUN ln -s /usr/bin/ps-list /usr/adminbinaire/ps-list && \
+    ln -s /usr/bin/kill-proc /usr/adminbinaire/kill-proc && \
+    ln -s /usr/bin/exit /usr/adminbinaire/exit && \
+    ln -s /usr/gamebinaire/* /usr/adminbinaire && \
 
 #Ajout des différents éléments dans le .bashrc des différents users
 RUN cat datas/memo.txt >> /etc/motd

@@ -1,1 +1,23 @@
 #!/bin/bash
+
+dossiers_autorises=("/foret/maison/" "/home/user/" "/home/admin/" "/foret/maison" "/home/user" "/home/admin")
+
+if [[ "$1" == -* ]]; then
+    echo "La commande ls ne contient aucune option."
+    echo "Usage : ls /chemin/du/dossier"
+    exit 1
+fi
+
+authoriser=false
+for path in "${dossiers_autorises[@]}"; do
+    if [[ "$1" == "$path" ]]; then
+        authoriser=true
+        break
+    fi
+done
+
+if [ "$authoriser" = true ]; then
+    /usr/bin/ls "$1"
+else
+    echo "Chemin incorrect"
+fi
