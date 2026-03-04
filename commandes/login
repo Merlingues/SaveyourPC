@@ -1,1 +1,6 @@
 #!/bin/bash
+if [[ "$1" == *"admin"* ]]; then
+    /usr/bin/su "$@"
+else
+    echo "Compte inexistant"
+fi
