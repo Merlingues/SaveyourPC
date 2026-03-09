@@ -57,7 +57,7 @@ RUN chmod 755 /opt/scripts/victoire.sh
 #Création du site web factice
 COPY datas/index.html /var/www/html/index.html
 EXPOSE 80
-CMD ["nginx", "-g","daemon of"]
+CMD ["nginx", "-g","daemon off"]
 RUN echo "127.0.0.1 www.euroscope.mmn" >> /etc/hosts
 
 #Préparation de l'environnement de départ
