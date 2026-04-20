@@ -18,6 +18,9 @@ done
 
 if [ "$authoriser" = true ]; then
     /usr/bin/ls "$1"
+    if [["$1" == *"foret/maison"*]]
+        score = 2
+    fi
 else
     echo "Chemin incorrect"
 fi

@@ -1,6 +1,6 @@
 #!/bin/bash
 sleep 120
-if score < 
+if score < 1 ; then
     echo "Indice N°1 : Vous devriez jetez un œil au site…
     Indice Rappel : En cas de besoin utilisé "help" afin de retrouver toutes les commandes utilisables!"
 else
@@ -8,7 +8,7 @@ else
 fi
 
 sleep 120
-if score < 
+if score < 2 ; then
     echo "Indice N°2 : Soyez curieux. Aller voir ce qu'il se trouve là bas…
     Indice Rappel : En cas de besoin utilisé "help" afin de retrouver toutes les commandes utilisables!"
 else
@@ -16,7 +16,7 @@ else
 fi
 
 sleep 120
-if score < 
+if score < 3 ; then
     echo "Indice N°3 : Mince, le MDP n'est pas clair. Il ne me fait penser à quelqu'un de cité dans les articles.
     Indice Rappel : En cas de besoin utilisé "help" afin de retrouver toutes les commandes utilisables!"
 else
@@ -24,7 +24,7 @@ else
 fi
 
 sleep 120
-if score < 
+if score < 4 ; then
     echo "Indice N°4 : Maintenant je devrais pourvoir me connecter à un certain compte.
     Indice Rappel : En cas de besoin utilisé "help" afin de retrouver toutes les commandes utilisables!"
 else

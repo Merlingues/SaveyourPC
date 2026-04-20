@@ -4,7 +4,9 @@ if [ "$#" -ne 2 ]; then
     echo "Usage : decrypt [décalage] [texte]"
     exit 1
 fi
-
+if [["$2" == *"qjyrjns"*]]; then
+    score =3
+fi
 shift_val=$(( ($1 % 26 + 26) % 26 ))
 
 alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
