@@ -1,6 +1,45 @@
 #!/bin/bash
+sleep 120
+if score < 
+    echo "Indice N°1 : Vous devriez jetez un œil au site…
+    Indice Rappel : En cas de besoin utilisé "help" afin de retrouver toutes les commandes utilisables!"
+else
+    continue
+fi
 
-sleep 630
+sleep 120
+if score < 
+    echo "Indice N°2 : Soyez curieux. Aller voir ce qu'il se trouve là bas…
+    Indice Rappel : En cas de besoin utilisé "help" afin de retrouver toutes les commandes utilisables!"
+else
+    continue
+fi
+
+sleep 120
+if score < 
+    echo "Indice N°3 : Mince, le MDP n'est pas clair. Il ne me fait penser à quelqu'un de cité dans les articles.
+    Indice Rappel : En cas de besoin utilisé "help" afin de retrouver toutes les commandes utilisables!"
+else
+    continue
+fi
+
+sleep 120
+if score < 
+    echo "Indice N°4 : Maintenant je devrais pourvoir me connecter à un certain compte.
+    Indice Rappel : En cas de besoin utilisé "help" afin de retrouver toutes les commandes utilisables!"
+else
+    continue
+fi
+
+sleep 120
+
+if score < 5; then
+    echo "Indice N°5 : Quelle est la commande pour kill un processus déjà ?
+    Indice Rappel : En cas de besoin utilisé "help" afin de retrouver toutes les commandes utilisables!"
+else 
+    continue
+fi 
+sleep 30
 tput civis
 clear
 
