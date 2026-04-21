@@ -25,8 +25,6 @@ RUN ln -s /usr/bin/fortune /usr/gamebinaire/fortune && \
     ln -s /usr/bin /usr/gamebinaire && \
     ln -s /usr/bin/cat /usr/gamebinaire/cat && \
     ln -s /usr/bin/clear /usr/gamebinaire/clear && \
-    ln -s /usr/bin/fortune /usr/gamebinaire/fortune && \
-    ln -s /usr/bin/nsnake /usr/gamebinaire/nsnake && \
     ln -s /usr/bin/sl /usr/gamebinaire/sl && \
     ln -s /usr/bin/echo /usr/gamebinaire/echo
 
