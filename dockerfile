@@ -37,10 +37,11 @@ RUN ln -s /usr/bin/ps-list /usr/adminbinaire/ps-list && \
 COPY datas/ /opt/datas/
 RUN cat /opt/datas/memo.txt >> /etc/motd
 RUN echo "echo /etc/motd" >> /home/user/.bashrc
-RUN cat datas/bashrc >> /home/user/.bashrc
+RUN cat /opt/datas/bashrc >> /home/user/.bashrc
 RUN echo "PATH = "/usr/gamebinaire"" >> /home/user/.bashrc
 RUN echo "PATH = "/usr/adminbinaire"" >> /home/admin/.bashrc
 RUN chmod +x /usr/gamebinaire/* && chmod +x /usr/adminbinaire/*
+RUN rm -rf /opt/datas/
 
 #Ajout des différents scripts 
 RUN mkdir -p /foret/maison
