@@ -1,5 +1,6 @@
 FROM ubuntu:latest
 
+# Installation des paquets (Attention : fortune, sl et nsnake s'installent dans /usr/games/)
 RUN apt-get update && apt-get install -y \
     curl \
     fortune \
@@ -8,43 +9,45 @@ RUN apt-get update && apt-get install -y \
     sl \
     && rm -rf /var/lib/apt/lists/*
 
+# Création des utilisateurs
 RUN useradd -m user
 RUN useradd -m admin && echo "admin:letmein" | chpasswd
 
-#Ajout des commandes
-RUN mkdir /usr/gamebinaire
-RUN mkdir /usr/adminbinaire
-COPY commandes/ /usr/gamebinaire
-COPY admincommandes/ /usr/adminbinaire
+# 1. Création des dossiers et copie de tes scripts persos
+RUN mkdir /usr/gamebinaire /usr/adminbinaire
+COPY commandes/ /usr/gamebinaire/
+COPY admincommandes/ /usr/adminbinaire/
 
-#Limitation des commandes
-RUN ln -s /usr/bin/fortune /usr/gamebinaire/fortune && \
-    ln -s /usr/bin/nsnake /usr/gamebinaire/nsnake && \
+# 2. On rend tes scripts persos exécutables (AVANT de créer les liens symboliques)
+RUN chmod +x /usr/gamebinaire/* || true
+RUN chmod +x /usr/adminbinaire/* || true
+
+# 3. Création des liens vers les commandes système (les jeux sont dans /usr/games/)
+RUN ln -s /usr/games/fortune /usr/gamebinaire/fortune && \
+    ln -s /usr/games/nsnake /usr/gamebinaire/nsnake && \
+    ln -s /usr/games/sl /usr/gamebinaire/sl && \
     ln -s /usr/bin/pwd /usr/gamebinaire/pwd && \
-    ln -s /usr/bin/cd /usr/gamebinaire/cd && \
-    ln -s /usr/bin /usr/gamebinaire && \
     ln -s /usr/bin/cat /usr/gamebinaire/cat && \
     ln -s /usr/bin/clear /usr/gamebinaire/clear && \
-    ln -s /usr/bin/sl /usr/gamebinaire/sl && \
     ln -s /usr/bin/echo /usr/gamebinaire/echo
 
-#limiter seulement pour le compte admin
-RUN ln -s /usr/bin/ps-list /usr/adminbinaire/ps-list && \
-    ln -s /usr/bin/exit /usr/adminbinaire/exit && \
-    ln -s /usr/gamebinaire/* /usr/adminbinaire
+# Liens pour l'admin (ps au lieu de ps-list)
+RUN ln -s /usr/bin/ps /usr/adminbinaire/ps && \
+    ln -s /usr/gamebinaire/* /usr/adminbinaire/
 
-#Ajout des différents éléments dans le .bashrc des différents users
+# 4. Configuration des profils utilisateurs (.bashrc et motd)
 COPY datas/ /opt/datas/
 RUN cat /opt/datas/memo.txt >> /etc/motd
-RUN echo "echo /etc/motd" >> /home/user/.bashrc
+
+# Correction de la syntaxe bash (export et pas d'espaces)
+RUN echo "cat /etc/motd" >> /home/user/.bashrc
 RUN cat /opt/datas/bashrc >> /home/user/.bashrc
-RUN echo "PATH = "/usr/gamebinaire"" >> /home/user/.bashrc
-RUN echo "PATH = "/usr/adminbinaire"" >> /home/admin/.bashrc
-RUN chmod +x /usr/gamebinaire/* && chmod +x /usr/adminbinaire/*
+RUN echo 'export PATH="/usr/gamebinaire"' >> /home/user/.bashrc
+RUN echo 'export PATH="/usr/adminbinaire"' >> /home/admin/.bashrc
 RUN rm -rf /opt/datas/
 
-#Ajout des différents scripts 
-RUN mkdir -p /foret/maison
+# 5. Ajout des différents scripts de l'aventure
+RUN mkdir -p /foret/maison /opt/scripts
 COPY scripts/voyante.sh /foret/maison/voyante.sh
 RUN chmod 777 /foret/maison/voyante.sh
 COPY scripts/ice.sh /opt/scripts/ice.sh
@@ -52,12 +55,13 @@ RUN chmod 755 /opt/scripts/ice.sh
 COPY scripts/victoire.sh /opt/scripts/victoire.sh
 RUN chmod 755 /opt/scripts/victoire.sh
 
-#Création du site web factice
+# 6. Création du site web factice
 COPY datas/index.html /var/www/html/index.html
 EXPOSE 80
-CMD ["nginx", "-g","daemon off"]
-RUN echo "127.0.0.1 www.euroscope.mmn" >> /etc/hosts
 
-#Préparation de l'environnement de départ
+# Préparation de l'environnement de départ
 WORKDIR /home/user
 USER user
+
+# Démarrage de nginx (en tâche de fond pour que le conteneur reste en vie)
+CMD ["nginx", "-g", "daemon off;"]

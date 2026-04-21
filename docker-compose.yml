@@ -4,4 +4,6 @@ services:
     container_name: SaveyourPC
     restart: unless-stopped
     stdin_open: true 
-    tty: true        
+    tty: true    
+    extra_hosts:
+      - "www.euroscope.mmn:127.0.0.1"    
