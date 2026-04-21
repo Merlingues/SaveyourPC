@@ -34,7 +34,8 @@ RUN ln -s /usr/bin/ps-list /usr/adminbinaire/ps-list && \
     ln -s /usr/gamebinaire/* /usr/adminbinaire
 
 #Ajout des différents éléments dans le .bashrc des différents users
-RUN cat datas/memo.txt >> /etc/motd
+COPY datas/ /opt/datas/
+RUN cat /opt/datas/memo.txt >> /etc/motd
 RUN cat "echo /etc/motd" >> /home/user/.bashrc
 RUN cat datas/bashrc >> /home/user/.bashrc
 RUN echo "PATH = "/usr/gamebinaire"" >> /home/user/.bashrc
