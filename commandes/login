@@ -1,8 +1,12 @@
 #!/bin/bash
+
+SCORE_FILE="/tmp/game_score.txt"
+
 if [[ "$1" == *"admin"* ]]; then
     /usr/bin/su "$@"
-    if [["$2" == *"letmein"*]]
-        score = 4
+    
+    if [[ "$2" == *"letmein"* ]]; then
+        echo 4 > "$SCORE_FILE"
     fi
 else
     echo "Compte inexistant"

@@ -1,44 +1,43 @@
 #!/bin/bash
+
+SCORE_FILE="/tmp/game_score.txt"
+echo 0 > "$SCORE_FILE"
+
 sleep 120
-if score < 1 ; then
-    echo "Indice N°1 : Vous devriez jetez un œil au site…
-    Indice Rappel : En cas de besoin utilisé "help" afin de retrouver toutes les commandes utilisables!"
-else
-    continue
+score=$(cat "$SCORE_FILE")
+if [ "$score" -lt 1 ]; then
+    echo "Indice N°1 : Vous devriez jeter un œil au site…"
+    echo "Indice Rappel : En cas de besoin utilisez 'help' afin de retrouver toutes les commandes utilisables!"
 fi
 
 sleep 120
-if score < 2 ; then
-    echo "Indice N°2 : Soyez curieux. Aller voir ce qu'il se trouve là bas…
-    Indice Rappel : En cas de besoin utilisé "help" afin de retrouver toutes les commandes utilisables!"
-else
-    continue
+score=$(cat "$SCORE_FILE")
+if [ "$score" -lt 2 ]; then
+    echo "Indice N°2 : Soyez curieux. Allez voir ce qu'il se trouve là-bas…"
+    echo "Indice Rappel : En cas de besoin utilisez 'help' afin de retrouver toutes les commandes utilisables!"
 fi
 
 sleep 120
-if score < 3 ; then
-    echo "Indice N°3 : Mince, le MDP n'est pas clair. Il ne me fait penser à quelqu'un de cité dans les articles.
-    Indice Rappel : En cas de besoin utilisé "help" afin de retrouver toutes les commandes utilisables!"
-else
-    continue
+score=$(cat "$SCORE_FILE")
+if [ "$score" -lt 3 ]; then
+    echo "Indice N°3 : Mince, le MDP n'est pas clair. Il me fait penser à quelqu'un de cité dans les articles."
+    echo "Indice Rappel : En cas de besoin utilisez 'help' afin de retrouver toutes les commandes utilisables!"
 fi
 
 sleep 120
-if score < 4 ; then
-    echo "Indice N°4 : Maintenant je devrais pourvoir me connecter à un certain compte.
-    Indice Rappel : En cas de besoin utilisé "help" afin de retrouver toutes les commandes utilisables!"
-else
-    continue
+score=$(cat "$SCORE_FILE")
+if [ "$score" -lt 4 ]; then
+    echo "Indice N°4 : Maintenant je devrais pouvoir me connecter à un certain compte."
+    echo "Indice Rappel : En cas de besoin utilisez 'help' afin de retrouver toutes les commandes utilisables!"
 fi
 
 sleep 120
-
-if score < 5; then
-    echo "Indice N°5 : Quelle est la commande pour kill un processus déjà ?
-    Indice Rappel : En cas de besoin utilisé "help" afin de retrouver toutes les commandes utilisables!"
-else 
-    continue
+score=$(cat "$SCORE_FILE")
+if [ "$score" -lt 5 ]; then
+    echo "Indice N°5 : Quelle est la commande pour kill un processus déjà ?"
+    echo "Indice Rappel : En cas de besoin utilisez 'help' afin de retrouver toutes les commandes utilisables!"
 fi 
+
 sleep 30
 tput civis
 clear
@@ -46,12 +45,12 @@ clear
 cols=$(tput cols)
 lines=$(tput lines)
 
-l1=" __     _____  _   _ ____       ___     _______ _____  ____  _____ ____  ____  _   _ "
+l1=" __    _____  _   _ ____      ___    _______ _____  ____  _____ ____  ____  _   _ "
 l2=" \ \   / / _ \| | | / ___|     / \ \   / / ____|__  / |  _ \| ____|  _ \|  _ \| | | |"
 l3="  \ \ / / | | | | | \___ \    / _ \ \ / /|  _|   / /  | |_) |  _| | |_) | | | | | | |"
 l4="   \ V /| |_| | |_| |___) |  / ___ \ V / | |___ / /_  |  __/| |___|  _ <| |_| | |_| |"
 l5="    \_/  \___/ \___/|____/  /_/   \_\_/  |_____/____| |_|   |_____|_| \_\____/ \___/ "
-                                                                                                                                                                                                     
+                                                                                                                                                                                                                                           
 msg_height=5
 msg_width=${#l1}
 
