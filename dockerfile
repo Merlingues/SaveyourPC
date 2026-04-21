@@ -15,6 +15,7 @@ RUN useradd -m admin && echo "admin:letmein" | chpasswd
 RUN mkdir /usr/gamebinaire
 RUN mkdir /usr/adminbinaire
 COPY commandes/ /usr/gamebinaire
+COPY admincommandes/ /usr/adminbinaire
 
 #Limitation des commandes
 RUN ln -s /usr/bin/fortune /usr/gamebinaire/fortune && \
@@ -31,7 +32,6 @@ RUN ln -s /usr/bin/fortune /usr/gamebinaire/fortune && \
 
 #limiter seulement pour le compte admin
 RUN ln -s /usr/bin/ps-list /usr/adminbinaire/ps-list && \
-    ln -s /usr/bin/kill-proc /usr/adminbinaire/kill-proc && \
     ln -s /usr/bin/exit /usr/adminbinaire/exit && \
     ln -s /usr/gamebinaire/* /usr/adminbinaire && \
 
