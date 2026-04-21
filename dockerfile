@@ -31,7 +31,7 @@ RUN ln -s /usr/bin/fortune /usr/gamebinaire/fortune && \
 #limiter seulement pour le compte admin
 RUN ln -s /usr/bin/ps-list /usr/adminbinaire/ps-list && \
     ln -s /usr/bin/exit /usr/adminbinaire/exit && \
-    ln -s /usr/gamebinaire/* /usr/adminbinaire && \
+    ln -s /usr/gamebinaire/* /usr/adminbinaire
 
 #Ajout des différents éléments dans le .bashrc des différents users
 RUN cat datas/memo.txt >> /etc/motd
