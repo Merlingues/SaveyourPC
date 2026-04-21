@@ -1,6 +1,5 @@
 if [[ "$1" == *"ice.sh"* ]]; then
     /usr/bin/pkill "$@"
-    score = 1
 else
     echo "Accès refusé"
 fi
