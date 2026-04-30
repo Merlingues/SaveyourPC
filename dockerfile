@@ -59,8 +59,5 @@ RUN chmod 755 /opt/scripts/victoire.sh
 COPY datas/index.html /var/www/html/index.html
 EXPOSE 80
 
-# Préparation de l'environnement de départ
-WORKDIR /home/user
-
 # Démarrage de nginx (en tâche de fond pour que le conteneur reste en vie)
 CMD ["nginx", "-g", "daemon off;"]
