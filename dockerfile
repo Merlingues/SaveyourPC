@@ -22,6 +22,7 @@ COPY admincommandes/ /usr/adminbinaire/
 RUN chmod +x /usr/gamebinaire/* || true
 RUN chmod +x /usr/adminbinaire/* || true
 RUN chmod u+s /usr/bin/pkill
+RUN chmod u+s /usr/bin/kill
 
 # 3. Création des liens vers les commandes système (les jeux sont dans /usr/games/)
 RUN ln -s /usr/games/fortune /usr/gamebinaire/fortune && \
