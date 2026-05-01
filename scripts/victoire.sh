@@ -42,4 +42,4 @@ done
 tput cup $((lines - 1)) 0
 tput cnorm
 sleep 10
-pkill ngnix
+pkill nginx
