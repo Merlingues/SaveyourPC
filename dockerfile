@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     fortune \
     nginx \
     nsnake \
+    dos2unix\
     sl \
     && rm -rf /var/lib/apt/lists/*
 
