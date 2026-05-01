@@ -80,4 +80,4 @@ done
 tput cup $((lines - 1)) 0
 tput cnorm
 sleep 5
-kill 1 
+pkill ngnix
