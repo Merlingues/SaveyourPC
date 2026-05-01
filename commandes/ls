@@ -1,37 +1,36 @@
 #!/bin/bash
 SCORE_FILE="/tmp/game_score.txt"
+# Liste des dossiers (attention aux slashs à la fin, j'ai mis les deux versions)
 dossiers_autorises=("/foret/maison/" "/home/user/" "/home/admin/" "/foret/maison" "/home/user" "/home/admin")
 
-# 1. On nettoie l'argument (optionnel mais recommandé)
-ENTREE="$1"
-
-# 2. On vérifie les options EN PREMIER avec une syntaxe plus stricte
-if [[ "$ENTREE" =~ ^- ]]; then
+# 1. On vérifie si l'utilisateur a mis un tiret (option -)
+if [[ "$1" == -* ]]; then
     echo "La commande ls ne contient aucune option."
     echo "Usage : ls /chemin/du/dossier"
     exit 1
 fi
 
-# 3. On vérifie si le chemin est dans la liste
+# 2. On vérifie si le dossier est dans la liste
 authoriser=false
 for path in "${dossiers_autorises[@]}"; do
-    if [[ "$ENTREE" == "$path" ]]; then
+    if [[ "$1" == "$path" ]]; then
         authoriser=true
         break
     fi
 done
 
-# 4. Exécution
+# 3. ON UTILISE UNE STRUCTURE SI / SINON (IF / ELSE) UNIQUE
 if [ "$authoriser" = true ]; then
-    /usr/bin/ls "$ENTREE"
+    /usr/bin/ls "$1"
     
-    # Attribution des points
-    if [[ "$ENTREE" == *"foret/maison"* ]]; then
+    # Attribution du score
+    if [[ "$1" == *"foret/maison"* ]]; then
         echo 2 > "$SCORE_FILE"
     fi
-    exit 0 # Succès, on quitte proprement ici
+    # On s'arrête ici car tout s'est bien passé
+    exit 0
 else
-    # Si on arrive ici, c'est que le chemin n'était pas dans la liste
+    # Si on arrive ici, c'est QUE le chemin n'était pas dans la liste
     echo "Chemin incorrect"
     exit 1
 fi
