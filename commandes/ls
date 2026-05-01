@@ -1,27 +1,28 @@
 #!/bin/bash
 SCORE_FILE="/tmp/game_score.txt"
 
-# 1. On bloque immédiatement si l'utilisateur met un tiret (option)
-if [[ "$1" == "-"* ]]; then
-    echo "La commande ls ne contient aucune option."
+# 1. Vérification du nombre d'arguments
+# $# représente le nombre d'arguments. S'il est différent de 1, on arrête.
+if [ "$#" -ne 1 ]; then
     echo "Usage : ls /chemin/du/dossier"
+    echo "Erreur : Trop d'arguments ou chemin manquant."
     exit 1
 fi
 
-# 2. Nouvelle solution : On utilise un 'case' pour valider le chemin
-# C'est beaucoup plus robuste que les boucles for pour un Escape Game
+# 2. Utilisation d'un bloc 'case' pour valider le dossier
+# C'est la solution la plus propre pour éviter les erreurs de lecture de Bash
 case "$1" in
     "/foret/maison/"|"/foret/maison")
         /usr/bin/ls "$1"
         echo 2 > "$SCORE_FILE"
-        exit 0 # Succès total, on arrête tout ici
+        exit 0
         ;;
     "/home/user/"|"/home/user"|"/home/admin/"|"/home/admin")
         /usr/bin/ls "$1"
-        exit 0 # Succès (sans points), on arrête tout ici
+        exit 0
         ;;
     *)
-        # Si le chemin n'est pas dans la liste au-dessus
+        # Si l'argument ne correspond à aucun dossier autorisé
         echo "Chemin incorrect"
         exit 1
         ;;
