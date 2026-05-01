@@ -1,28 +1,29 @@
 #!/bin/bash
 SCORE_FILE="/tmp/game_score.txt"
 
-# 1. Vérification du nombre d'arguments
-# $# représente le nombre d'arguments. S'il est différent de 1, on arrête.
-if [ "$#" -ne 1 ]; then
+# 1. On nettoie l'argument pour enlever les espaces ou retours à la ligne parasites
+# On utilise xargs pour "nettoyer" la variable
+input=$(echo "$1" | xargs)
+
+# 2. On vérifie si l'argument est vide
+if [ -z "$input" ]; then
     echo "Usage : ls /chemin/du/dossier"
-    echo "Erreur : Trop d'arguments ou chemin manquant."
+    echo "Erreur : Chemin manquant."
     exit 1
 fi
 
-# 2. Utilisation d'un bloc 'case' pour valider le dossier
-# C'est la solution la plus propre pour éviter les erreurs de lecture de Bash
-case "$1" in
-    "/foret/maison/"|"/foret/maison")
-        /usr/bin/ls "$1"
+# 3. Validation par bloc case (plus tolérant avec les slashs)
+case "$input" in
+    "/foret/maison"|"/foret/maison/")
+        /usr/bin/ls "/foret/maison/"
         echo 2 > "$SCORE_FILE"
         exit 0
         ;;
-    "/home/user/"|"/home/user"|"/home/admin/"|"/home/admin")
-        /usr/bin/ls "$1"
+    "/home/user"|"/home/user/"|"/home/admin"|"/home/admin/")
+        /usr/bin/ls "$input"
         exit 0
         ;;
     *)
-        # Si l'argument ne correspond à aucun dossier autorisé
         echo "Chemin incorrect"
         exit 1
         ;;
