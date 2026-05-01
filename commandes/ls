@@ -1,30 +1,8 @@
 #!/bin/bash
-SCORE_FILE="/tmp/game_score.txt"
 
-# 1. On nettoie l'argument pour enlever les espaces ou retours à la ligne parasites
-# On utilise xargs pour "nettoyer" la variable
-input=$(echo "$1" | xargs)
-
-# 2. On vérifie si l'argument est vide
-if [ -z "$input" ]; then
-    echo "Usage : ls /chemin/du/dossier"
-    echo "Erreur : Chemin manquant."
+if [[ "$*" == *"/"* ]] || [[ "$*" == *".."* ]]; then
+    echo "Accès refusé : Vous n'avez pas les permissions pour quitter /home/joueur."
     exit 1
 fi
 
-# 3. Validation par bloc case (plus tolérant avec les slashs)
-case "$input" in
-    "/foret/maison"|"/foret/maison/")
-        /usr/bin/ls "/foret/maison/"
-        echo 2 > "$SCORE_FILE"
-        exit 0
-        ;;
-    "/home/user"|"/home/user/"|"/home/admin"|"/home/admin/")
-        /usr/bin/ls "$input"
-        exit 0
-        ;;
-    *)
-        echo "Chemin incorrect"
-        exit 1
-        ;;
-esac
+/bin/ls --color=auto /home/joueur "$@"
