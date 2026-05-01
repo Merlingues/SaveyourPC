@@ -62,6 +62,3 @@ EXPOSE 80
 
 # Démarrage de nginx (en tâche de fond pour que le conteneur reste en vie)
 CMD ["nginx", "-g", "daemon off;"]
-
-WORKDIR /home/user
-USER user
