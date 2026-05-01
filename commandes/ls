@@ -2,6 +2,13 @@
 SCORE_FILE="/tmp/game_score.txt"
 dossiers_autorises=("/foret/maison/" "/home/user/" "/home/admin/" "/foret/maison" "/home/user" "/home/admin")
 
+# 1. Vérification des options (à mettre au début)
+if [[ "$1" == -* ]]; then
+    echo "La commande ls ne contient aucune option."
+    echo "Usage : ls /chemin/du/dossier"
+    exit 1
+fi
+
 authoriser=false
 for path in "${dossiers_autorises[@]}"; do
     if [[ "$1" == "$path" ]]; then
@@ -12,15 +19,10 @@ done
 
 if [ "$authoriser" = true ]; then
     /usr/bin/ls "$1"
-    if [["$1" == *"foret/maison"*]]; then
+    # 2. Correction ici : ajout de l'espace et du "then"
+    if [[ "$1" == *"foret/maison"* ]]; then
         echo 2 > "$SCORE_FILE"
     fi
 else
     echo "Chemin incorrect"
-fi
-
-if [[ "$1" == -* ]]; then
-    echo "La commande ls ne contient aucune option."
-    echo "Usage : ls /chemin/du/dossier"
-    exit 1
 fi
