@@ -1,5 +1,5 @@
 #!/bin/bash
-
+SCORE_FILE="/tmp/game_score.txt"
 if [[ "$1" == *"www.euroscope.mmn"* ]]; then
     /usr/bin/curl "$@"
     echo 1 > "$SCORE_FILE"

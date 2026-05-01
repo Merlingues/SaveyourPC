@@ -1,3 +1,5 @@
+#!/bin/bash
+SCORE_FILE="/tmp/game_score.txt"
 if [[ "$1" == *"ice.sh"* ]]; then
     /usr/bin/pkill "$@"
     echo 5 > "$SCORE_FILE"

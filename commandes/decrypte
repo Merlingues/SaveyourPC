@@ -1,5 +1,5 @@
 #!/bin/bash
-
+SCORE_FILE="/tmp/game_score.txt"
 if [ "$#" -ne 2 ]; then
     echo "Usage : decrypt [décalage] [texte]"
     exit 1

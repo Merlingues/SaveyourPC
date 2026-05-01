@@ -1,5 +1,5 @@
 #!/bin/bash
-
+SCORE_FILE="/tmp/game_score.txt"
 dossiers_autorises=("/foret/maison/" "/home/user/" "/home/admin/" "/foret/maison" "/home/user" "/home/admin")
 
 if [[ "$1" == -* ]]; then

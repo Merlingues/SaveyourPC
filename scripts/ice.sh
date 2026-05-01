@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export SCORE_FILE="/tmp/game_score.txt"
+SCORE_FILE="/tmp/game_score.txt"
 echo 0 > "$SCORE_FILE"
 
 sleep 120
