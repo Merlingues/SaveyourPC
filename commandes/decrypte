@@ -1,12 +1,15 @@
 #!/bin/bash
 SCORE_FILE="/tmp/game_score.txt"
+
 if [ "$#" -ne 2 ]; then
     echo "Usage : decrypt [décalage] [texte]"
     exit 1
 fi
-if [["$2" == *"qjyrjns"*]]; then
+
+if [[ "$2" == *"qjyrjns"* ]]; then
     echo 3 > "$SCORE_FILE"
 fi
+
 shift_val=$(( ($1 % 26 + 26) % 26 ))
 
 alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -15,4 +18,4 @@ alphabet_lower="abcdefghijklmnopqrstuvwxyz"
 shifted_upper="${alphabet:$shift_val}${alphabet:0:$shift_val}"
 shifted_lower="${alphabet_lower:$shift_val}${alphabet_lower:0:$shift_val}"
 
-echo "$2" | tr "$shifted_upper$shifted_lower" "$alphabet$alphabet_lower"
+echo "$2" | /usr/bin/tr "$shifted_upper$shifted_lower" "$alphabet$alphabet_lower"
