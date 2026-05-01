@@ -13,7 +13,7 @@ Connectez-vous en tant qu'administrateur
 Localisez le processus
 Neutralisez-le avant l'arrêt définitif du PC.
 
-Utilisez la commande help ou consultez le site suivant pour obtenir de l'aide :
+Utilisez la commande 'commande-help' ou consultez le site suivant pour obtenir de l'aide :
 www.euroscope.mmn
 
 /!\ ALERTE /!\                /!\ ALERTE /!\
