@@ -2,12 +2,6 @@
 SCORE_FILE="/tmp/game_score.txt"
 dossiers_autorises=("/foret/maison/" "/home/user/" "/home/admin/" "/foret/maison" "/home/user" "/home/admin")
 
-if [[ "$1" == -* ]]; then
-    echo "La commande ls ne contient aucune option."
-    echo "Usage : ls /chemin/du/dossier"
-    exit 1
-fi
-
 authoriser=false
 for path in "${dossiers_autorises[@]}"; do
     if [[ "$1" == "$path" ]]; then
@@ -23,4 +17,10 @@ if [ "$authoriser" = true ]; then
     fi
 else
     echo "Chemin incorrect"
+fi
+
+if [[ "$1" == -* ]]; then
+    echo "La commande ls ne contient aucune option."
+    echo "Usage : ls /chemin/du/dossier"
+    exit 1
 fi
