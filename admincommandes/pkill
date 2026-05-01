@@ -1,5 +1,6 @@
 if [[ "$1" == *"ice.sh"* ]]; then
     /usr/bin/pkill "$@"
+    echo 5 > "$SCORE_FILE"
 else
     echo "Accès refusé"
 fi

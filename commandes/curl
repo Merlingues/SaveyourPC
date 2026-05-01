@@ -2,7 +2,7 @@
 
 if [[ "$1" == *"www.euroscope.mmn"* ]]; then
     /usr/bin/curl "$@"
-    score = 1
+    echo 1 > "$SCORE_FILE"
 else
     echo "Accès refusé"
 fi

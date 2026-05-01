@@ -19,7 +19,7 @@ done
 if [ "$authoriser" = true ]; then
     /usr/bin/ls "$1"
     if [["$1" == *"foret/maison"*]]
-        score = 2
+        echo 2 > "$SCORE_FILE"
     fi
 else
     echo "Chemin incorrect"
