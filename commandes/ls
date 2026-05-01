@@ -2,14 +2,15 @@
 SCORE_FILE="/tmp/game_score.txt"
 dossiers_autorises=("/foret/maison/" "/home/user/" "/home/admin/" "/foret/maison" "/home/user" "/home/admin")
 
-# 1. On vérifie d'abord si l'utilisateur a essayé de mettre une option (ex: -la)
+# 1. On vérifie d'abord si l'utilisateur a mis une option (ex: -la)
+# S'il y a un "-", on affiche l'erreur et on quitte DIRECTEMENT avec 'exit'
 if [[ "$1" == -* ]]; then
     echo "La commande ls ne contient aucune option."
     echo "Usage : ls /chemin/du/dossier"
     exit 1
 fi
 
-# 2. On vérifie si le chemin est dans la liste autorisée
+# 2. On vérifie si le dossier est dans la liste
 authoriser=false
 for path in "${dossiers_autorises[@]}"; do
     if [[ "$1" == "$path" ]]; then
@@ -18,16 +19,16 @@ for path in "${dossiers_autorises[@]}"; do
     fi
 done
 
-# 3. On agit en fonction de l'autorisation
+# 3. Structure IF / ELSE complète pour éviter que les messages se mélangent
 if [ "$authoriser" = true ]; then
     /usr/bin/ls "$1"
     
-    # On donne les points si c'est le bon dossier
+    # On vérifie si c'est le dossier spécial pour le score
     if [[ "$1" == *"foret/maison"* ]]; then
         echo 2 > "$SCORE_FILE"
     fi
 else
-    # Si le chemin n'est pas autorisé, on affiche l'erreur et ON ARRÊTE le script
+    # Si le dossier n'est pas autorisé, on affiche l'erreur et on quitte
     echo "Chemin incorrect"
     exit 1
 fi
