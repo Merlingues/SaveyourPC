@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "COMMANDES UTILES :"
 echo "-----------------------------------------------------------------------"
-echo "- help"
+echo "- commande-help"
 echo "Affiche les commandes et leur mode de fonctionnement"
 echo "-----------------------------------------------------------------------"
 echo "- curl [url]"
