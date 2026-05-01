@@ -19,9 +19,9 @@ RUN mkdir /usr/gamebinaire /usr/adminbinaire
 COPY commandes/ /usr/gamebinaire/
 COPY admincommandes/ /usr/adminbinaire/
 
-# 2. On rend tes scripts persos exécutables (AVANT de créer les liens symboliques)
 RUN chmod +x /usr/gamebinaire/* || true
 RUN chmod +x /usr/adminbinaire/* || true
+RUN chmod u+s /usr/bin/pkill
 
 # 3. Création des liens vers les commandes système (les jeux sont dans /usr/games/)
 RUN ln -s /usr/games/fortune /usr/gamebinaire/fortune && \
