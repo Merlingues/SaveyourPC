@@ -12,15 +12,19 @@ Pour relever le défi, vous devez disposer de Docker installé sur votre machine
     ```bash
     git clone https://github.com/Merlingues/SaveyourPC
     ```
-2.  **Construire l'image :**
+2.  **Aller dans le dossier :**
+    ```bash
+    cd SaveyourPC
+    ```
+3.  **Construire l'image :**
     ```bash
     docker compose build
     ```
-3.  **Lancer le conteneur en arrière-plan :**
+4.  **Lancer le conteneur en arrière-plan :**
     ```bash
     docker compose up -d
     ```
-4.  **Rejoindre la partie :**
+5.  **Rejoindre la partie :**
     ```bash
     docker exec -it --user user "SaveyourPC" bash
     ```
