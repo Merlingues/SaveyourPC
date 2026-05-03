@@ -1,3 +1,24 @@
 #!/bin/bash
 
-/bin/ls --color=auto /home/joueur "$@"
+chemins=("/foret/maison" "/home/user" "/home/admin" "foret/maison" "home/user" "home/admin" "/user" "/admin" "/maison" "/foret" "/home" "user" "admin" "home" "foret" "maison")
+
+if [ $# -gt 1 ]; then
+    echo "Erreur : Trop d'arguments"
+    exit 1
+fi
+
+cible=$1
+trouve=false
+
+for chemin in "${chemins[@]}"; do
+    if [ "$cible" == "$chemin" ]; then
+        trouve=true
+        break
+    fi
+done
+
+if [ "$trouve" = true ]; then
+    /bin/ls "$cible"
+else
+    echo "Erreur : Chemin non autorisé ou manquant."
+fi
