@@ -2,7 +2,7 @@
 
 chemins=("/foret/maison" "/home/user" "/home/admin" "foret/maison" "home/user" "home/admin" "/user" "/admin" "/maison" "/foret" "/home" "user" "admin" "home" "foret" "maison")
 
-if [ $# -gt 1 ]; then
+if [ $# -gt 2 ]; then
     echo "Erreur : Trop d'arguments"
     exit 1
 fi
