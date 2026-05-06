@@ -17,6 +17,7 @@ RUN useradd -m admin && echo "admin:letmein" | chpasswd
 # 1. Création des dossiers et copie de tes scripts persos
 RUN mkdir /usr/gamebinaire /usr/adminbinaire
 COPY commandes/ /usr/gamebinaire/
+COPY commandes/ /usr/adminbinaire/
 COPY admincommandes/ /usr/adminbinaire/
 
 RUN chmod +x /usr/gamebinaire/* || true
