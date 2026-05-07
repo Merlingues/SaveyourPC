@@ -7,35 +7,35 @@ sleep 120
 score=$(cat "$SCORE_FILE")
 if [ "$score" -lt 1 ]; then
     echo "Indice N°1 : Vous devriez jeter un œil au site…"
-    echo "Indice Rappel : En cas de besoin utilisez 'help' afin de retrouver toutes les commandes utilisables!"
+    echo "Indice Rappel : En cas de besoin utilisez 'command-help' afin de retrouver toutes les commandes utilisables!"
 fi
 
 sleep 120
 score=$(cat "$SCORE_FILE")
 if [ "$score" -lt 2 ]; then
     echo "Indice N°2 : Soyez curieux. Allez voir ce qu'il se trouve là-bas…"
-    echo "Indice Rappel : En cas de besoin utilisez 'help' afin de retrouver toutes les commandes utilisables!"
+    echo "Indice Rappel : En cas de besoin utilisez 'command-help' afin de retrouver toutes les commandes utilisables!"
 fi
 
 sleep 120
 score=$(cat "$SCORE_FILE")
 if [ "$score" -lt 3 ]; then
     echo "Indice N°3 : Mince, le MDP n'est pas clair. Il me fait penser à quelqu'un de cité dans les articles."
-    echo "Indice Rappel : En cas de besoin utilisez 'help' afin de retrouver toutes les commandes utilisables!"
+    echo "Indice Rappel : En cas de besoin utilisez 'command-help' afin de retrouver toutes les commandes utilisables!"
 fi
 
 sleep 120
 score=$(cat "$SCORE_FILE")
 if [ "$score" -lt 4 ]; then
     echo "Indice N°4 : Maintenant je devrais pouvoir me connecter à un certain compte."
-    echo "Indice Rappel : En cas de besoin utilisez 'help' afin de retrouver toutes les commandes utilisables!"
+    echo "Indice Rappel : En cas de besoin utilisez 'command-help' afin de retrouver toutes les commandes utilisables!"
 fi
 
 sleep 120
 score=$(cat "$SCORE_FILE")
 if [ "$score" -lt 5 ]; then
     echo "Indice N°5 : Quelle est la commande pour kill un processus déjà ?"
-    echo "Indice Rappel : En cas de besoin utilisez 'help' afin de retrouver toutes les commandes utilisables!"
+    echo "Indice Rappel : En cas de besoin utilisez 'command-help' afin de retrouver toutes les commandes utilisables!"
 fi 
 
 sleep 30
