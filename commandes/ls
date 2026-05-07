@@ -8,17 +8,10 @@ if [ $# -gt 2 ]; then
 fi
 
 cible=$1
-trouve=false
 
 for chemin in "${chemins[@]}"; do
     if [ "$cible" == "$chemin" ]; then
-        trouve=true
+        /bin/ls "$cible"
         break
     fi
 done
-
-if [ "$trouve" = true ]; then
-    /bin/ls "$cible"
-else
-    echo "Erreur : Chemin non autorisé ou manquant."
-fi
