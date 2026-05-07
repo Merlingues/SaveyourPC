@@ -35,7 +35,8 @@ RUN ln -s /usr/games/fortune /usr/gamebinaire/fortune && \
     ln -s /usr/bin/echo /usr/gamebinaire/echo
 
 # Liens pour l'admin (ps au lieu de ps-list)
-RUN ln -s /usr/bin/ps /usr/adminbinaire/ps
+RUN ln -s /usr/bin/ps /usr/adminbinaire/ps && \
+    ln -s /usr/gamebinaire/* /usr/adminbinaire/
 
 # 4. Configuration des profils utilisateurs (.bashrc et motd)
 COPY datas/ /opt/datas/
